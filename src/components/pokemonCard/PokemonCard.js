@@ -4,14 +4,12 @@ import {useState} from 'react'
 import cardBack from '../../images/card-back-side.jpg'
 const PokemonCard = ({name, type, id, values, img}) => {
     const [isActive, setActive] = useState(false);
-    const handlerOnMouseOver = () => {
-        setActive(true)
+    const handlerClick = () => {
+        setActive(!isActive)
     };
-    const handlerOnMouserOut = () => {
-        setActive(false)
-    };
+
     return (
-        <div className={styles.root} onMouseOver={handlerOnMouseOver} onMouseOut={handlerOnMouserOut}>
+        <div className={styles.root} onClick={handlerClick}>
             <div className={`${styles.pokemonCard} ${isActive ? styles.active: ''}`}>
                 <div className={styles.cardFront}>
                     <div className={`${styles.wrap} ${styles.front}`}>
