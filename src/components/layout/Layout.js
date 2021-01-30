@@ -1,22 +1,24 @@
+import React from 'react'
 
 import styles from './style.module.css'
+const Layout = ({id, title, urlBg='', colorBg='', children}) => {
 
-const Layout = ({id, title, descr, urlBg='', colorBg=''}) => {
     return (
-        <section id={id} style={id === 1 || id === 3 ? {background: urlBg} : {background: colorBg}}>
-            <div className={styles.wrapper} style={{color: colorBg}}>
+        <section className={styles.root} id={id}
+                 style={urlBg !== '' ? {background: `url(${urlBg})`} : {background: colorBg}}
+        >
+            <div className={styles.wrapper}>
                 <article>
                     <div className={styles.title}>
                         <h3>{title}</h3>
-                        <span className={styles.separator}></span>
+                        <span className={styles.separator}/>
                     </div>
-                    <div className={`${styles.desc} ${styles.full}`} style={{color: colorBg}}>
-                        <p>{descr}</p>
+                    <div className={`${styles.desc} ${styles.full}`}>
+                        {children}
                     </div>
                 </article>
             </div>
         </section>
     )
 };
-
 export default Layout
